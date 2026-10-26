@@ -27,7 +27,6 @@ Useful links:
 \itemize{
   \item \url{https://subnationalpolitics.com}
   \item \url{https://github.com/guadag12/sppdata}
-  \item \url{https://guadag12.github.io/sppdata/}
   \item Report bugs at \url{https://github.com/guadag12/sppdata/issues}
 }
 

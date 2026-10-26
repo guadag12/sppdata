@@ -5,17 +5,9 @@ Access to the **Subnational Politics Project (SPP)** datasets from R.
 `sppdata` lets you download the SPP's harmonized subnational political datasets
 for Argentina, Brazil, and Mexico, and browse their variables offline. Data is
 fetched on demand from a GitHub Releases mirror and cached locally; the
-archival, citable copies live on [Harvard Dataverse](https://dataverse.harvard.edu/).
+archival, citable copies live on [Harvard Dataverse](https://dataverse.harvard.edu/dataverse/spp/).
 
 ## Installation
-
-From r-universe (recommended while in development):
-
-```r
-install.packages("sppdata", repos = "https://subnationalpolitics.r-universe.dev")
-```
-
-Or from GitHub:
 
 ```r
 # install.packages("pak")

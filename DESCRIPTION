@@ -30,7 +30,7 @@ Suggests:
     rmarkdown,
     curl
 VignetteBuilder: knitr
-URL: https://subnationalpolitics.com, https://github.com/guadag12/sppdata, https://guadag12.github.io/sppdata/
+URL: https://subnationalpolitics.com, https://github.com/guadag12/sppdata
 BugReports: https://github.com/guadag12/sppdata/issues
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
