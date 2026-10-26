@@ -1,0 +1,25 @@
+dataset,variable,label,type,description
+SED,country_state_code,Country State Code,id,Unique identifier for a country-state unit; join key across datasets.
+SED,name_head_sub_exe,Governor Given Name(s),character,Given name(s) of the sitting governor.
+SED,surname_head_sub_exe,Governor Surname(s),character,Surname(s) of the sitting governor.
+SED,start_date_head_sub_exe,Start Date of Governor Term,date,Date the governor's term began.
+SED,end_date_head_sub_exe,End Date of Governor Term,date,Date the governor's term ended.
+SED,gender_head_sub_exe,Governor Gender,factor,Gender of the governor.
+SED,party_head_sub_exe,Governor Party,character,Party of the governor.
+SED,early_exit_sub_exe,Governor Early Exit,factor,Whether/why the governor left office before the term's scheduled end.
+SED,consecutive_reelection_sub_exe,Governor Reelection,integer,Count of consecutive reelections for the incumbent governor.
+SED,turnover_head_sub_exe,Governor Turnover,binary,Whether the governorship changed party control.
+SED,cumulative_changes_head_sub_exe,Cumulative Changes of Governor,integer,Running count of governor changes in the state.
+SED,cumulative_years_in_power_sub_exe,Governor Years in Power,numeric,Cumulative years the incumbent party has held the governorship.
+SED,enp_sub_exe,Effective Number of Parties (executive),numeric,"Effective number of parties (Laakso and Taagepera, 1979) for the executive race."
+SEED,enp_votes_sub_leg,Effective Number of Parties (votes),numeric,Effective number of parties based on vote shares.
+SLED,num_seats_incumbent_sub_leg,Seats of Incumbent in Chamber,integer,Number of legislative seats held by the incumbent (governor's) party.
+SLED,num_seats_opos_sub_leg,Seats of Opposition in Chamber,integer,Number of legislative seats held by the opposition.
+SLED,enp_seats_sub_leg,Effective Number of Parties (seats),numeric,Effective number of parties based on seat shares.
+SDI,SUR_index_giraudy_2015,SUR Index (Giraudy 2015),numeric,"Subnational Undemocratic Regime index; higher = more democratic/competitive."
+SDI,SEDI_sub_exe,SEDI (executive),numeric,Subnational Electoral Democracy Index for the executive dimension.
+SDI,turnover_sub_exe,Turnover (executive),numeric,Executive turnover component of subnational democracy.
+SDI,contestation_sub_exe,Contestation (executive),numeric,Executive contestation component of subnational democracy.
+SDI,contestation_sub_leg,Contestation (legislative),numeric,Legislative contestation component of subnational democracy.
+NED,name_head_nat_exe,President Name,character,Name of the sitting national executive (president).
+NED,party_abbrev_head_nat_exe,President Party Abbreviation,character,Party abbreviation of the sitting president.

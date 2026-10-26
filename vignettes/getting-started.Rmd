@@ -1,0 +1,76 @@
+---
+title: "Getting started with sppdata"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with sppdata}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+```{r setup}
+library(sppdata)
+```
+
+## What's in the SPP
+
+The Subnational Politics Project harmonizes subnational political data for
+Argentina, Brazil, and Mexico. The package exposes six relational datasets:
+
+```{r}
+spp_datasets()
+```
+
+## Exploring variables (offline)
+
+The codebook is bundled with the package, so you can browse variables without
+downloading anything:
+
+```{r}
+head(spp_codebook())
+
+# Just one dataset:
+spp_codebook("SED")
+```
+
+For a readable, printed view of a dataset's variables:
+
+```{r}
+spp_describe("SED")
+```
+
+## Downloading data
+
+`spp_data()` fetches a dataset from the project's GitHub Releases mirror and
+caches it locally, so it only hits the network once per version.
+
+```{r, eval = FALSE}
+sed <- spp_data("SED")
+head(sed)
+```
+
+By default you get the version this package was built against, which keeps
+analyses reproducible. To pull a specific published version:
+
+```{r, eval = FALSE}
+sed_v1 <- spp_data("SED", tag = "v1.0")
+```
+
+## Managing the cache
+
+```{r, eval = FALSE}
+spp_cache_dir()     # where downloads live
+spp_cache_clear()   # reclaim the space
+```
+
+## Citing the data
+
+The archival, citable copies of the datasets live on Harvard Dataverse. The
+GitHub Releases mirror is a convenience download channel only.
+
+```{r}
+spp_citation()
+```

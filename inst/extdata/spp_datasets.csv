@@ -1,0 +1,7 @@
+abbrev,name,file,description
+NED,National Executive Database,ned.rds,National executive (president) politics in a country-year structure.
+SED,Subnational Executive Database,sed.rds,"Governors and vice-governors: terms, party, turnover, reelection (country-state-year)."
+SEED,Subnational Executive Elections Database,seed.rds,Subnational executive (gubernatorial) election results and vote shares.
+SLED,Subnational Legislative Elections Database,sled.rds,Subnational legislative election results and seat allocation (incumbent vs opposition).
+SDI,Subnational Democracy Indices,sdi.rds,"Subnational democracy indices, including the SUR Index and SEDI."
+CFTDFLD,Capital Federal & Tierra del Fuego Legislatures Database,cftdfld.rds,Legislative data for Ciudad Autonoma de Buenos Aires and Tierra del Fuego (Argentina).

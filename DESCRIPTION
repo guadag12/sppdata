@@ -1,0 +1,36 @@
+Package: sppdata
+Title: Access to the Subnational Politics Project (SPP) Datasets
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Juan Sebastian", "Uribe-Quintero", email = "you@example.edu",
+           role = c("aut", "cre")),
+    person("Agustina", "Giraudy", role = "aut"),
+    person("Guadalupe", "Gonzalez", role = "aut"),
+    person("Francisco", "Urdinez", role = "aut"),
+    person("Subnational Politics Project", role = "cph"))
+Description: Download and explore the harmonized subnational political
+    datasets of the Subnational Politics Project (SPP), covering executive
+    politics, legislative composition, electoral dynamics, and subnational
+    democracy in Argentina, Brazil, and Mexico. Datasets are fetched on
+    demand from a GitHub Releases mirror and cached locally; the archival,
+    citable copies live on Harvard Dataverse. A variable-level codebook is
+    bundled for offline reference.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends:
+    R (>= 4.0)
+Imports:
+    piggyback,
+    tools,
+    utils
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    curl
+VignetteBuilder: knitr
+URL: https://subnationalpolitics.com, https://github.com/subnationalpolitics/sppdata
+BugReports: https://github.com/subnationalpolitics/sppdata/issues
+Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.1
