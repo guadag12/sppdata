@@ -126,11 +126,13 @@ spp_data <- function(dataset,
             conditionMessage(e))
     FALSE
   })
-
+  
   if (!ok || !file.exists(local)) {
-    message("SPP data could not be retrieved. Check your internet ",
-            "connection, or download the archival copy from Dataverse ",
-            "(DOI ", doi, ").")
+    reg <- spp_registry()
+    doi <- reg$doi[reg$abbrev == dataset]
+    message("Could not download the dataset from the release. Check your ",
+            "internet connection, or download the archival copy from ",
+            "Dataverse (DOI ", doi, ").")
     return(invisible(NULL))
   }
 

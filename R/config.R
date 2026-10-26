@@ -4,8 +4,7 @@
 # new Dataverse version.
 
 # GitHub repo hosting the data as Release assets ("owner/repo").
-.spp_repo <- "subnationalpolitics/sppdata"
-
+.spp_repo <- "guadag12/sppdata"
 # Default Release tag to download from. Pin users to a known-good version
 # so results are reproducible; bump when you publish a new release.
 .spp_default_tag <- "latest"
