@@ -58,19 +58,45 @@ spp_describe <- function(dataset) {
   invisible(cb)
 }
 
-#' How to cite the SPP
+#' Cómo citar el SPP
 #'
-#' Prints the suggested citations for the SPP data and codebook, including the
-#' archival Dataverse and OSF DOIs.
+#' Imprime las citas sugeridas. Cada dataset tiene su propio DOI de
+#' Harvard Dataverse; el codebook tiene un DOI de OSF.
 #'
-#' @return Invisibly, `NULL`. Called for its printed output.
+#' @param dataset Abreviatura opcional (p. ej. "SED"). Si se omite, lista
+#'   el DOI de todas las bases.
+#' @return Invisiblemente, `NULL`.
 #' @export
 #' @examples
 #' spp_citation()
-spp_citation <- function() {
+#' spp_citation("SED")
+spp_citation <- function(dataset = NULL) {
+  reg <- spp_registry()
+  if (!is.null(dataset)) {
+    dataset <- toupper(dataset)
+    if (!dataset %in% reg$abbrev) {
+      stop("Dataset desconocido '", dataset, "'.", call. = FALSE)
+    }
+    reg <- reg[reg$abbrev == dataset, , drop = FALSE]
+  }
   cat("Subnational Politics Project (SPP)\n")
-  cat("Data (archival):   https://doi.org/", .spp_dataverse_doi, "\n", sep = "")
-  cat("Codebook (OSF):    https://doi.org/", .spp_osf_doi, "\n", sep = "")
-  cat("Project site:      https://subnationalpolitics.com\n")
+  cat(strrep("-", 60), "\n", sep = "")
+  for (i in seq_len(nrow(reg))) {
+    cat(reg$abbrev[i], " — ", reg$name[i], "\n", sep = "")
+    cat("  DOI: https://doi.org/", reg$doi[i], "\n\n", sep = "")
+  }
+  cat("Codebook (OSF): https://doi.org/", .spp_osf_doi, "\n", sep = "")
+  cat("Sitio: https://subnationalpolitics.com\n")
   invisible(NULL)
+}
+
+#' DOI de Dataverse de un dataset
+#' @param dataset Abreviatura, p. ej. "SED".
+#' @return El DOI (character).
+#' @export
+spp_doi <- function(dataset) {
+  reg <- spp_registry()
+  dataset <- toupper(dataset)
+  if (!dataset %in% reg$abbrev) stop("Dataset desconocido '", dataset, "'.", call. = FALSE)
+  reg$doi[reg$abbrev == dataset]
 }

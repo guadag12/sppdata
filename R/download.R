@@ -130,7 +130,7 @@ spp_data <- function(dataset,
   if (!ok || !file.exists(local)) {
     message("SPP data could not be retrieved. Check your internet ",
             "connection, or download the archival copy from Dataverse ",
-            "(DOI ", .spp_dataverse_doi, ").")
+            "(DOI ", doi, ").")
     return(invisible(NULL))
   }
 
