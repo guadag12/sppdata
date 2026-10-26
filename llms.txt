@@ -1,0 +1,111 @@
+# sppdata
+
+Access to the **Subnational Politics Project (SPP)** datasets from R.
+
+`sppdata` lets you download the SPP’s harmonized subnational political
+datasets for Argentina, Brazil, and Mexico, and browse their variables
+offline. Data is fetched on demand from a GitHub Releases mirror and
+cached locally; the archival, citable copies live on [Harvard
+Dataverse](https://dataverse.harvard.edu/).
+
+## Installation
+
+From r-universe (recommended while in development):
+
+``` r
+
+install.packages("sppdata", repos = "https://subnationalpolitics.r-universe.dev")
+```
+
+Or from GitHub:
+
+``` r
+
+# install.packages("pak")
+pak::pak("guadag12/sppdata")
+```
+
+## Usage
+
+``` r
+
+library(sppdata)
+
+spp_datasets()        # the six SPP datasets
+spp_codebook("SED")   # variables in one dataset (offline)
+spp_describe("SED")   # printed, readable view
+
+sed <- spp_data("SED")  # download + cache
+head(sed)
+
+spp_citation()        # how to cite
+```
+
+## Datasets
+
+| Abbrev  | Name                                                     |
+|---------|----------------------------------------------------------|
+| NED     | National Executive Database                              |
+| SED     | Subnational Executive Database                           |
+| SEED    | Subnational Executive Elections Database                 |
+| SLED    | Subnational Legislative Elections Database               |
+| SDI     | Subnational Democracy Indices                            |
+| CFTDFLD | Capital Federal & Tierra del Fuego Legislatures Database |
+
+## How it works
+
+- **Download channel:** GitHub Releases, via the `piggyback` package.
+- **Cache:** `tools::R_user_dir("sppdata", "cache")`; clear with
+  [`spp_cache_clear()`](https://guadag12.github.io/sppdata/reference/spp_cache_clear.md).
+- **Archival source:** Harvard Dataverse (versioned DOIs) — the citable
+  copy.
+- **Codebook:** bundled as a CSV, so it works with no network.
+
+## License
+
+MIT. See `LICENSE`.
+
+# Package index
+
+## Datasets
+
+Discover and download the SPP datasets.
+
+- [`spp_datasets()`](https://guadag12.github.io/sppdata/reference/spp_datasets.md)
+  : List the SPP datasets
+- [`spp_data()`](https://guadag12.github.io/sppdata/reference/spp_data.md)
+  : Download an SPP dataset
+
+## Variables & codebook
+
+Explore the variables without downloading anything.
+
+- [`spp_codebook()`](https://guadag12.github.io/sppdata/reference/spp_codebook.md)
+  : The SPP variable codebook
+- [`spp_describe()`](https://guadag12.github.io/sppdata/reference/spp_describe.md)
+  : Describe the variables in one dataset
+
+## Citation
+
+How to cite the datasets and the codebook.
+
+- [`spp_citation()`](https://guadag12.github.io/sppdata/reference/spp_citation.md)
+  : How to cite the SPP
+- [`spp_doi()`](https://guadag12.github.io/sppdata/reference/spp_doi.md)
+  : Dataverse DOI for a dataset
+
+## Cache utilities
+
+Manage the locally downloaded files.
+
+- [`spp_cache_dir()`](https://guadag12.github.io/sppdata/reference/spp_cache_dir.md)
+  : Local cache directory for SPP data
+- [`spp_cache_clear()`](https://guadag12.github.io/sppdata/reference/spp_cache_clear.md)
+  : Clear the SPP data cache
+
+# Articles
+
+### All vignettes
+
+- [Getting started with
+  sppdata](https://guadag12.github.io/sppdata/articles/getting-started.md):
