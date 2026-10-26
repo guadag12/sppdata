@@ -34,8 +34,6 @@ Useful links:
 
 - <https://github.com/guadag12/sppdata>
 
-- <https://guadag12.github.io/sppdata/>
-
 - Report bugs at <https://github.com/guadag12/sppdata/issues>
 
 ## Author

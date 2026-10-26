@@ -47,7 +47,7 @@ be retrieved - e.g. no internet connection.
 # \donttest{
 # Requires an internet connection:
 sed <- spp_data("SED")
-#> ⠙ 2 items, page 1 | 2ms
+#> ⠙ 2 items, page 1 | 4ms
 head(sed)
 #> # A tibble: 6 × 36
 #>   country_name country_code state_name state_code country_state_code region_name
