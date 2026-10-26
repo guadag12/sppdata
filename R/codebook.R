@@ -23,7 +23,7 @@ spp_codebook <- function(dataset = NULL) {
          call. = FALSE)
   }
   cb <- utils::read.csv(path, stringsAsFactors = FALSE, encoding = "UTF-8")
-
+  
   if (!is.null(dataset)) {
     dataset <- toupper(dataset)
     cb <- cb[toupper(cb$dataset) == dataset, , drop = FALSE]
@@ -58,14 +58,14 @@ spp_describe <- function(dataset) {
   invisible(cb)
 }
 
-#' Cómo citar el SPP
+#' How to cite the SPP
 #'
-#' Imprime las citas sugeridas. Cada dataset tiene su propio DOI de
-#' Harvard Dataverse; el codebook tiene un DOI de OSF.
+#' Prints the official Harvard Dataverse citation for each dataset. Pass a
+#' dataset abbreviation to print just that one.
 #'
-#' @param dataset Abreviatura opcional (p. ej. "SED"). Si se omite, lista
-#'   el DOI de todas las bases.
-#' @return Invisiblemente, `NULL`.
+#' @param dataset Optional abbreviation (e.g. "SED"). If omitted, prints the
+#'   citation for every dataset.
+#' @return Invisibly, `NULL`.
 #' @export
 #' @examples
 #' spp_citation()
@@ -75,28 +75,28 @@ spp_citation <- function(dataset = NULL) {
   if (!is.null(dataset)) {
     dataset <- toupper(dataset)
     if (!dataset %in% reg$abbrev) {
-      stop("Dataset desconocido '", dataset, "'.", call. = FALSE)
+      stop("Unknown dataset '", dataset, "'.", call. = FALSE)
     }
     reg <- reg[reg$abbrev == dataset, , drop = FALSE]
   }
   cat("Subnational Politics Project (SPP)\n")
-  cat(strrep("-", 60), "\n", sep = "")
+  cat(strrep("-", 60), "\n\n", sep = "")
   for (i in seq_len(nrow(reg))) {
-    cat(reg$abbrev[i], " — ", reg$name[i], "\n", sep = "")
-    cat("  DOI: https://doi.org/", reg$doi[i], "\n\n", sep = "")
+    cat(reg$abbrev[i], "\n", sep = "")
+    cat(reg$citation[i], "\n\n", sep = "")
   }
   cat("Codebook (OSF): https://doi.org/", .spp_osf_doi, "\n", sep = "")
-  cat("Sitio: https://subnationalpolitics.com\n")
+  cat("Site: https://subnationalpolitics.com\n")
   invisible(NULL)
 }
 
-#' DOI de Dataverse de un dataset
-#' @param dataset Abreviatura, p. ej. "SED".
-#' @return El DOI (character).
+#' Dataverse DOI for a dataset
+#' @param dataset Abbreviation, e.g. "SED".
+#' @return The DOI (character).
 #' @export
 spp_doi <- function(dataset) {
   reg <- spp_registry()
   dataset <- toupper(dataset)
-  if (!dataset %in% reg$abbrev) stop("Dataset desconocido '", dataset, "'.", call. = FALSE)
+  if (!dataset %in% reg$abbrev) stop("Unknown dataset '", dataset, "'.", call. = FALSE)
   reg$doi[reg$abbrev == dataset]
 }

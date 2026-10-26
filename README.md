@@ -1,4 +1,4 @@
-# sppdata
+# sppdata <img src="man/figures/logo.png" align="right" height="138" />
 
 Access to the **Subnational Politics Project (SPP)** datasets from R.
 
@@ -19,7 +19,7 @@ Or from GitHub:
 
 ```r
 # install.packages("pak")
-pak::pak("subnationalpolitics/sppdata")
+pak::pak("guadag12/sppdata")
 ```
 
 ## Usage

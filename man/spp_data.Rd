@@ -21,7 +21,7 @@ when available instead of re-downloading.}
 }
 \value{
 A data frame, or \code{NULL} (with an informative message) if the data
-cannot be retrieved — e.g. no internet connection.
+cannot be retrieved - e.g. no internet connection.
 }
 \description{
 Fetches one of the six SPP datasets from the project's GitHub Releases

@@ -26,24 +26,26 @@ locally; the archival, citable copies live on Harvard Dataverse.
 Useful links:
 \itemize{
   \item \url{https://subnationalpolitics.com}
-  \item \url{https://github.com/subnationalpolitics/sppdata}
-  \item Report bugs at \url{https://github.com/subnationalpolitics/sppdata/issues}
+  \item \url{https://github.com/guadag12/sppdata}
+  \item \url{https://guadag12.github.io/sppdata/}
+  \item Report bugs at \url{https://github.com/guadag12/sppdata/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Juan Sebastian Uribe-Quintero \email{you@example.edu}
+\strong{Maintainer}: Guadalupe Gonzalez \email{guada@example.edu}
 
 Authors:
 \itemize{
-  \item Juan Sebastian Uribe-Quintero \email{you@example.edu}
+  \item Guadalupe Gonzalez \email{guada@example.edu}
   \item Agustina Giraudy
-  \item Guadalupe Gonzalez
   \item Francisco Urdinez
+  \item Felipe Soto Jorquera
 }
 
 Other contributors:
 \itemize{
+  \item Magdalena Nieto [research team member]
   \item Subnational Politics Project [copyright holder]
 }
 

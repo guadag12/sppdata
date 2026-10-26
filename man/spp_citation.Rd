@@ -4,15 +4,20 @@
 \alias{spp_citation}
 \title{How to cite the SPP}
 \usage{
-spp_citation()
+spp_citation(dataset = NULL)
+}
+\arguments{
+\item{dataset}{Optional abbreviation (e.g. "SED"). If omitted, prints the
+citation for every dataset.}
 }
 \value{
-Invisibly, \code{NULL}. Called for its printed output.
+Invisibly, \code{NULL}.
 }
 \description{
-Prints the suggested citations for the SPP data and codebook, including the
-archival Dataverse and OSF DOIs.
+Prints the official Harvard Dataverse citation for each dataset. Pass a
+dataset abbreviation to print just that one.
 }
 \examples{
 spp_citation()
+spp_citation("SED")
 }

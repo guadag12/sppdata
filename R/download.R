@@ -76,7 +76,7 @@ read_spp_file <- function(path) {
 #' @param overwrite If `TRUE`, re-download even if a cached copy exists.
 #'
 #' @return A data frame, or `NULL` (with an informative message) if the data
-#'   cannot be retrieved — e.g. no internet connection.
+#'   cannot be retrieved - e.g. no internet connection.
 #' @export
 #' @examples
 #' \donttest{
