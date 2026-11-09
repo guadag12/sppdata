@@ -2,25 +2,45 @@
 % Please edit documentation in R/codebook.R
 \name{spp_codebook}
 \alias{spp_codebook}
-\title{The SPP variable codebook}
+\title{Consult or download the SPP codebook}
 \usage{
-spp_codebook(dataset = NULL)
+spp_codebook(
+  dataset = NULL,
+  download = FALSE,
+  file = NULL,
+  version = spp_default_tag()
+)
 }
 \arguments{
-\item{dataset}{Optional dataset abbreviation (e.g. \code{"SED"}) to filter to.
-Case-insensitive. If \code{NULL} (default), the full codebook is returned.}
+\item{dataset}{Optional dataset abbreviation, e.g. \code{"SED"}, to filter the
+offline variable table. Ignored for PDFs only when \code{NULL}; specify no
+dataset when downloading the full versioned PDF.}
+
+\item{download}{If \code{TRUE}, download the official PDF rather than return the
+bundled variable table.}
+
+\item{file}{Optional destination path for the PDF. Defaults to
+\code{spp_codebook_v1.pdf} or \code{spp_codebook_v2.pdf} in the working directory.}
+
+\item{version}{Published codebook version, \code{"v1.0"} or \code{"v2.0"}.
+Used only when \code{download = TRUE}.}
 }
 \value{
-A data frame with columns \code{dataset}, \code{variable}, \code{label}, \code{type},
-and \code{description}.
+With \code{download = FALSE}, a data frame (\code{dataset}, \code{variable},
+\code{label}, \code{type}, \code{description}). With \code{download = TRUE}, the path of the
+saved PDF (invisibly), or \code{NULL} if downloading fails.
 }
 \description{
-Returns the variable-level codebook bundled with the package: one row per
-variable, with the dataset it belongs to, a human-readable label, its type,
-and a description. This ships inside the package, so it works offline and
-needs no download. Optionally filter to a single dataset.
+By default, returns the variable-level table bundled with the package,
+which is available offline. With \code{download = TRUE}, downloads the official
+PDF codebook for the requested GitHub Release (v1.0 or v2.0).
+The bundled CSV is not a historical versioned PDF codebook.
 }
 \examples{
 head(spp_codebook())
 spp_codebook("SED")
+\dontrun{
+spp_codebook(version = "v1.0", download = TRUE)
+spp_codebook(version = "v2.0", download = TRUE)
+}
 }

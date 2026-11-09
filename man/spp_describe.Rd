@@ -16,6 +16,4 @@ The filtered codebook data frame, invisibly.
 Prints the codebook entries for a single dataset in a compact, readable
 form. A convenience wrapper over \code{\link[=spp_codebook]{spp_codebook()}} for interactive use.
 }
-\examples{
-spp_describe("SED")
-}
+\keyword{internal}

@@ -15,6 +15,4 @@ only once per version. The location follows the CRAN-sanctioned
 \code{\link[tools:R_user_dir]{tools::R_user_dir()}} convention and can be overridden with the
 \code{sppdata.cache} option or the \code{SPPDATA_CACHE} environment variable.
 }
-\examples{
-spp_cache_dir()
-}
+\keyword{internal}

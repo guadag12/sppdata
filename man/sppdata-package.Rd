@@ -4,47 +4,44 @@
 \name{sppdata-package}
 \alias{sppdata}
 \alias{sppdata-package}
-\title{sppdata: Access to the Subnational Politics Project datasets}
+\title{sppdata: Subnational Politics Project datasets}
 \description{
-Download and explore the harmonized subnational political datasets of the
-Subnational Politics Project (SPP) for Argentina, Brazil, and Mexico.
-Data is fetched on demand from a GitHub Releases mirror and cached
-locally; the archival, citable copies live on Harvard Dataverse.
+Access SPP data for Argentina, Brazil, and Mexico.
+See \url{https://www.subnationalpolitics.com/}.
 }
 \section{Main functions}{
 
 \itemize{
-\item \code{\link[=spp_datasets]{spp_datasets()}}: list the available datasets.
-\item \code{\link[=spp_data]{spp_data()}}: download one dataset.
-\item \code{\link[=spp_codebook]{spp_codebook()}} / \code{\link[=spp_describe]{spp_describe()}}: explore variables (offline).
-\item \code{\link[=spp_cache_dir]{spp_cache_dir()}} / \code{\link[=spp_cache_clear]{spp_cache_clear()}}: manage the local cache.
-\item \code{\link[=spp_citation]{spp_citation()}}: how to cite the data.
+\item \code{\link[=spp_datasets]{spp_datasets()}}: list datasets.
+\item \code{\link[=spp_data]{spp_data()}}: download a dataset.
+\item \code{\link[=spp_codebook]{spp_codebook()}}: browse or download the codebook.
+\item \code{\link[=spp_citation]{spp_citation()}}: dataset citations and DOIs.
 }
 }
 
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://subnationalpolitics.com}
+  \item \url{https://www.subnationalpolitics.com/}
   \item \url{https://github.com/guadag12/sppdata}
   \item Report bugs at \url{https://github.com/guadag12/sppdata/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Guadalupe Gonzalez \email{guada@example.edu}
+\strong{Maintainer}: Guadalupe Gonzalez \email{guadag12@umd.edu}
 
 Authors:
 \itemize{
-  \item Guadalupe Gonzalez \email{guada@example.edu}
+  \item Guadalupe Gonzalez \email{guadag12@umd.edu}
   \item Agustina Giraudy
-  \item Francisco Urdinez
-  \item Felipe Soto Jorquera
 }
 
 Other contributors:
 \itemize{
-  \item Magdalena Nieto [research team member]
+  \item Francisco Urdinez [contributor]
+  \item Felipe Soto Jorquera [contributor]
+  \item Magdalena Nieto [contributor]
   \item Subnational Politics Project [copyright holder]
 }
 

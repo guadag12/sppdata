@@ -1,13 +1,13 @@
 Package: sppdata
 Title: Access to the Subnational Politics Project (SPP) Datasets
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
-    person("Guadalupe", "Gonzalez", email = "guada@example.edu",
+    person("Guadalupe", "Gonzalez", email = "guadag12@umd.edu",
            role = c("aut", "cre")),
     person("Agustina", "Giraudy", role = "aut"),
-    person("Francisco", "Urdinez", role = "aut"),
-    person("Felipe", "Soto Jorquera", role = "aut"),
-    person("Magdalena", "Nieto", role = "rtm"),
+    person("Francisco", "Urdinez", role = "ctb"),
+    person("Felipe", "Soto Jorquera", role = "ctb"),
+    person("Magdalena", "Nieto", role = "ctb"),
     person("Subnational Politics Project", role = "cph"))
 Description: Download and explore the harmonized subnational political
     datasets of the Subnational Politics Project (SPP), covering executive
@@ -28,9 +28,10 @@ Suggests:
     testthat (>= 3.0.0),
     knitr,
     rmarkdown,
-    curl
+    curl,
+    ggplot2
 VignetteBuilder: knitr
-URL: https://subnationalpolitics.com, https://github.com/guadag12/sppdata
+URL: https://www.subnationalpolitics.com/, https://github.com/guadag12/sppdata
 BugReports: https://github.com/guadag12/sppdata/issues
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3

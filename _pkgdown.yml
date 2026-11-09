@@ -1,11 +1,17 @@
 url: https://guadag12.github.io/sppdata/
 template:
   bootstrap: 5
-authors:
-  Magdalena Nieto:
-    roles: [ctb]
-  roles:
-    ctb: "Research Assistant"
+navbar:
+  structure:
+    left: [intro, reference, articles]
+    right: [spp, github]
+  components:
+    spp:
+      text: "SPP website"
+      href: https://www.subnationalpolitics.com/
+    github:
+      icon: fab fa-github
+      href: https://github.com/guadag12/sppdata
 reference:
   - title: "Datasets"
     desc: "Discover and download the SPP datasets."
@@ -13,17 +19,14 @@ reference:
       - spp_datasets
       - spp_data
   - title: "Variables & codebook"
-    desc: "Explore the variables without downloading anything."
+    desc: "Browse variables and download the codebook."
     contents:
       - spp_codebook
-      - spp_describe
   - title: "Citation"
-    desc: "How to cite the datasets and the codebook."
+    desc: "How to cite the datasets and codebook, including DOIs."
     contents:
       - spp_citation
-      - spp_doi
-  - title: "Cache utilities"
-    desc: "Manage the locally downloaded files."
+articles:
+  - title: "Getting started"
     contents:
-      - spp_cache_dir
-      - spp_cache_clear
+      - getting-started

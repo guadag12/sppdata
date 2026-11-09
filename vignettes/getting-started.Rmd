@@ -1,3 +1,4 @@
+
 ---
 title: "Getting started with sppdata"
 output: rmarkdown::html_vignette
@@ -8,69 +9,114 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 ```{r setup}
 library(sppdata)
 ```
 
-## What's in the SPP
+## About the Subnational Politics Project
 
-The Subnational Politics Project harmonizes subnational political data for
-Argentina, Brazil, and Mexico. The package exposes six relational datasets:
+The [Subnational Politics Project (SPP)](https://www.subnationalpolitics.com/)
+provides harmonized subnational political data for Argentina, Brazil,
+and Mexico.
+
+The `sppdata` package facilitates access to six datasets covering
+subnational political institutions, elections, and democracy.
+
+## Available datasets
+
+To explore the datasets available through the package:
 
 ```{r}
 spp_datasets()
 ```
 
-## Exploring variables (offline)
 
-The codebook is bundled with the package, so you can browse variables without
-downloading anything:
+## Exploring variables
+
+The package provides access to the SPP codebook, which documents
+the variables included in each dataset.
+
+You can explore variables directly in R without an internet connection:
 
 ```{r}
 head(spp_codebook())
 
-# Just one dataset:
+# Explore variables for a specific dataset
 spp_codebook("SED")
 ```
 
-For a readable, printed view of a dataset's variables:
+The official PDF codebooks are also available for download.
+Each version corresponds to a published release of the SPP datasets.
 
-```{r}
-spp_describe("SED")
+```{r, eval = FALSE}
+# Download the official v1.0 codebook
+spp_codebook(version = "v1.0", download = TRUE)
+
+# Download the official v2.0 codebook
+spp_codebook(version = "v2.0", download = TRUE)
 ```
 
 ## Downloading data
 
-`spp_data()` fetches a dataset from the project's GitHub Releases mirror and
-caches it locally, so it only hits the network once per version.
+Use `spp_data()` to download datasets from the project's GitHub Releases.
+Downloaded datasets are cached locally to avoid unnecessary downloads.
 
 ```{r, eval = FALSE}
 sed <- spp_data("SED")
+
 head(sed)
 ```
 
-By default you get the version this package was built against, which keeps
-analyses reproducible. To pull a specific published version:
+You can also request a specific published version:
 
 ```{r, eval = FALSE}
 sed_v1 <- spp_data("SED", tag = "v1.0")
 ```
 
-## Managing the cache
+## Mapping subnational politics
+
+SPP provides geographic boundaries for subnational units
+in Argentina, Brazil, and Mexico.
+
+The boundaries can be downloaded from the SPP v2.0 release.
 
 ```{r, eval = FALSE}
-spp_cache_dir()     # where downloads live
-spp_cache_clear()   # reclaim the space
+library(sf)
+library(ggplot2)
+
+url <- paste0(
+  "https://github.com/guadag12/sppdata/releases/",
+  "download/v2.0/map_subnational_units.geojson"
+)
+
+map_file <- tempfile(fileext = ".geojson")
+
+download.file(url, map_file, mode = "wb")
+
+map <- sf::st_read(map_file, quiet = TRUE)
+
+ggplot(map) +
+  geom_sf(fill = "#E9ECEF", color = "white", linewidth = 0.2) +
+  theme_void()
 ```
 
-## Citing the data
+## Citing SPP data
 
-The archival, citable copies of the datasets live on Harvard Dataverse. The
-GitHub Releases mirror is a convenience download channel only.
+The archival versions of the SPP datasets are hosted on
+Harvard Dataverse.
+
+Use `spp_citation()` to retrieve citation information and
+DOIs for the datasets and codebook.
 
 ```{r}
 spp_citation()
 ```
+
+For additional information, visit the
+[Subnational Politics Project website](https://www.subnationalpolitics.com/).

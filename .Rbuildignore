@@ -7,3 +7,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^pkgdown$
+^doc$
+^Meta$
+
+^CRAN_AUDIT\.md$
+^cran-comments\.md$
+
+^spp_boundaries\.geojson$
+^spp_codebook\.csv$

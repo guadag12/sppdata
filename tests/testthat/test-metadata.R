@@ -19,11 +19,19 @@ test_that("spp_codebook() filters by dataset, case-insensitively", {
 })
 
 test_that("spp_describe() returns its data invisibly", {
-  out <- withVisible(spp_describe("SED"))
+  out <- withVisible(sppdata:::spp_describe("SED"))
   expect_false(out$visible)
   expect_s3_class(out$value, "data.frame")
 })
 
 test_that("spp_data() rejects unknown datasets before any download", {
   expect_error(spp_data("NOTADATASET"), "Unknown dataset")
+})
+
+
+test_that("PDF codebook validation does not require network", {
+  expect_error(spp_codebook(version = "v3.0", download = TRUE), "Unknown PDF")
+  expect_error(spp_codebook("SED", download = TRUE), "omit 'dataset'")
+  expect_error(spp_codebook(version = "v1.0", download = TRUE,
+                            file = "codebook.csv"), "ending in .pdf")
 })

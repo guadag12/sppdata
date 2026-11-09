@@ -17,8 +17,4 @@ Invisibly, \code{TRUE} on success.
 Removes cached datasets. CRAN policy requires that cached contents be
 actively managed, so this gives users a simple way to reclaim the space.
 }
-\examples{
-\donttest{
-spp_cache_clear()
-}
-}
+\keyword{internal}

@@ -8,9 +8,7 @@
 #' `sppdata.cache` option or the `SPPDATA_CACHE` environment variable.
 #'
 #' @return The cache directory path (character scalar). Created if needed.
-#' @export
-#' @examples
-#' spp_cache_dir()
+#' @keywords internal
 spp_cache_dir <- function() {
   path <- getOption("sppdata.cache", Sys.getenv("SPPDATA_CACHE", ""))
   if (!nzchar(path)) {
@@ -30,11 +28,7 @@ spp_cache_dir <- function() {
 #' @param tag Optional release tag. If supplied, only that version's cache is
 #'   cleared; otherwise the whole cache is emptied.
 #' @return Invisibly, `TRUE` on success.
-#' @export
-#' @examples
-#' \donttest{
-#' spp_cache_clear()
-#' }
+#' @keywords internal
 spp_cache_clear <- function(tag = NULL) {
   root <- spp_cache_dir()
   target <- if (is.null(tag)) root else file.path(root, tag)
@@ -62,14 +56,14 @@ read_spp_file <- function(path) {
 #'
 #' Fetches one of the six SPP datasets from the project's GitHub Releases
 #' mirror and returns it as a data frame. The file is cached locally (see
-#' [spp_cache_dir()]), so repeated calls in the same version do not hit the
+#' the local cache), so repeated calls in the same version do not hit the
 #' network. The archival, citable copy of every dataset lives on Harvard
 #' Dataverse; see [spp_citation()].
 #'
 #' @param dataset Dataset abbreviation, e.g. `"SED"`. See [spp_datasets()] for
 #'   the full list. Case-insensitive.
 #' @param tag Release tag (version) to download. Defaults to the version this
-#'   package was built against, so results are reproducible. Override to pull
+#'   package was built against (`v2.0`), so results are reproducible. Override to pull
 #'   a different published version.
 #' @param use_cache If `TRUE` (default), return a previously downloaded copy
 #'   when available instead of re-downloading.
@@ -79,7 +73,7 @@ read_spp_file <- function(path) {
 #'   cannot be retrieved - e.g. no internet connection.
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Requires an internet connection:
 #' sed <- spp_data("SED")
 #' head(sed)

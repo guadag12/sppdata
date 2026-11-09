@@ -11,7 +11,7 @@ spp_data(dataset, tag = spp_default_tag(), use_cache = TRUE, overwrite = FALSE)
 the full list. Case-insensitive.}
 
 \item{tag}{Release tag (version) to download. Defaults to the version this
-package was built against, so results are reproducible. Override to pull
+package was built against (\code{v2.0}), so results are reproducible. Override to pull
 a different published version.}
 
 \item{use_cache}{If \code{TRUE} (default), return a previously downloaded copy
@@ -26,12 +26,12 @@ cannot be retrieved - e.g. no internet connection.
 \description{
 Fetches one of the six SPP datasets from the project's GitHub Releases
 mirror and returns it as a data frame. The file is cached locally (see
-\code{\link[=spp_cache_dir]{spp_cache_dir()}}), so repeated calls in the same version do not hit the
+the local cache), so repeated calls in the same version do not hit the
 network. The archival, citable copy of every dataset lives on Harvard
 Dataverse; see \code{\link[=spp_citation]{spp_citation()}}.
 }
 \examples{
-\donttest{
+\dontrun{
 # Requires an internet connection:
 sed <- spp_data("SED")
 head(sed)
