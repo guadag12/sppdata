@@ -29,31 +29,38 @@ spp_citation()
 #> 
 #> NED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Huertas-Hernandez, Sergio; Urdinez, Francisco, 2025, "National Executive Database (NED) (v. 2)", https://doi.org/10.7910/DVN/HNKQUH, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/HNKQUH
 #> 
 #> SED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Urdinez, Francisco, 2025, "Subnational Executive Database (SED) (v. 2)", https://doi.org/10.7910/DVN/1D3P3J, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/1D3P3J
 #> 
 #> SEED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Huertas-Hernandez, Sergio; Urdinez, Francisco, 2025, "Subnational Executive Elections Database (SEED) (v. 2)", https://doi.org/10.7910/DVN/UPOWMW, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/UPOWMW
 #> 
 #> SLED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea, 2025, "Subnational Legislative Elections Database (SLED) (v. 2)", https://doi.org/10.7910/DVN/084FXF, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/084FXF
 #> 
 #> SDI
 #> Giraudy, Agustina, 2025, "Subnational Democracy Index (SDI) (v. 2)", https://doi.org/10.7910/DVN/7TNLBW, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/7TNLBW
 #> 
 #> CFTDFLD
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea, 2025, "Capital Federal & Tierra del Fuego Legislatures Database (CFTDFLD) (v. 1)", https://doi.org/10.7910/DVN/AJJLHX, Harvard Dataverse, V2
+#> DOI: https://doi.org/10.7910/DVN/AJJLHX
 #> 
-#> Codebook (OSF): https://doi.org/10.17605/OSF.IO/H96FD.
-#> Site: https://subnationalpolitics.com
+#> Codebook (OSF): https://doi.org/10.17605/OSF.IO/H96FD
+#> Site: https://www.subnationalpolitics.com/
 spp_citation("SED")
 #> Subnational Politics Project (SPP)
 #> ------------------------------------------------------------
 #> 
 #> SED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Urdinez, Francisco, 2025, "Subnational Executive Database (SED) (v. 2)", https://doi.org/10.7910/DVN/1D3P3J, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/1D3P3J
 #> 
-#> Codebook (OSF): https://doi.org/10.17605/OSF.IO/H96FD.
-#> Site: https://subnationalpolitics.com
+#> Codebook (OSF): https://doi.org/10.17605/OSF.IO/H96FD
+#> Site: https://www.subnationalpolitics.com/
 ```

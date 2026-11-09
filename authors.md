@@ -6,11 +6,11 @@
 
 - **Agustina Giraudy**. Author.
 
-- **Francisco Urdinez**. Author.
+- **Francisco Urdinez**. Contributor.
 
-- **Felipe Soto Jorquera**. Author.
+- **Felipe Soto Jorquera**. Contributor.
 
-- **Magdalena Nieto**. Research team member.
+- **Magdalena Nieto**. Contributor.
 
 - **Subnational Politics Project**. Copyright holder.
 
@@ -19,14 +19,14 @@
 Source:
 [`inst/CITATION`](https://github.com/guadag12/sppdata/blob/master/inst/CITATION)
 
-Gonzalez G, Giraudy A, Urdinez F, Soto Jorquera F (2026). *sppdata:
-Access to the Subnational Politics Project (SPP) Datasets*. R package
-version 0.0.0.9000, <https://subnationalpolitics.com>.
+Gonzalez G, Giraudy A (2026). *sppdata: Access to the Subnational
+Politics Project (SPP) Datasets*. R package version 0.1.0,
+<https://www.subnationalpolitics.com/>.
 
     @Manual{,
       title = {sppdata: Access to the Subnational Politics Project (SPP) Datasets},
-      author = {Guadalupe Gonzalez and Agustina Giraudy and Francisco Urdinez and Felipe {Soto Jorquera}},
+      author = {Guadalupe Gonzalez and Agustina Giraudy},
       year = {2026},
-      note = {R package version 0.0.0.9000},
-      url = {https://subnationalpolitics.com},
+      note = {R package version 0.1.0},
+      url = {https://www.subnationalpolitics.com/},
     }

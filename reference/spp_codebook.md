@@ -1,27 +1,50 @@
-# The SPP variable codebook
+# Consult or download the SPP codebook
 
-Returns the variable-level codebook bundled with the package: one row
-per variable, with the dataset it belongs to, a human-readable label,
-its type, and a description. This ships inside the package, so it works
-offline and needs no download. Optionally filter to a single dataset.
+By default, returns the variable-level table bundled with the package,
+which is available offline. With `download = TRUE`, downloads the
+official PDF codebook for the requested GitHub Release (v1.0 or v2.0).
+The bundled CSV is not a historical versioned PDF codebook.
 
 ## Usage
 
 ``` r
-spp_codebook(dataset = NULL)
+spp_codebook(
+  dataset = NULL,
+  download = FALSE,
+  file = NULL,
+  version = spp_default_tag()
+)
 ```
 
 ## Arguments
 
 - dataset:
 
-  Optional dataset abbreviation (e.g. `"SED"`) to filter to.
-  Case-insensitive. If `NULL` (default), the full codebook is returned.
+  Optional dataset abbreviation, e.g. `"SED"`, to filter the offline
+  variable table. Ignored for PDFs only when `NULL`; specify no dataset
+  when downloading the full versioned PDF.
+
+- download:
+
+  If `TRUE`, download the official PDF rather than return the bundled
+  variable table.
+
+- file:
+
+  Optional destination path for the PDF. Defaults to
+  `spp_codebook_v1.pdf` or `spp_codebook_v2.pdf` in the working
+  directory.
+
+- version:
+
+  Published codebook version, `"v1.0"` or `"v2.0"`. Used only when
+  `download = TRUE`.
 
 ## Value
 
-A data frame with columns `dataset`, `variable`, `label`, `type`, and
-`description`.
+With `download = FALSE`, a data frame (`dataset`, `variable`, `label`,
+`type`, `description`). With `download = TRUE`, the path of the saved
+PDF (invisibly), or `NULL` if downloading fails.
 
 ## Examples
 
@@ -84,4 +107,8 @@ spp_codebook("SED")
 #> 11                                  Running count of governor changes in the state.
 #> 12                  Cumulative years the incumbent party has held the governorship.
 #> 13 Effective number of parties (Laakso and Taagepera, 1979) for the executive race.
+if (FALSE) { # \dontrun{
+spp_codebook(version = "v1.0", download = TRUE)
+spp_codebook(version = "v2.0", download = TRUE)
+} # }
 ```

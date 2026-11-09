@@ -19,12 +19,3 @@ spp_cache_clear(tag = NULL)
 ## Value
 
 Invisibly, `TRUE` on success.
-
-## Examples
-
-``` r
-# \donttest{
-spp_cache_clear()
-#> Cleared SPP cache: /home/runner/.cache/R/sppdata
-# }
-```

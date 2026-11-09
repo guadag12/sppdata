@@ -5,11 +5,18 @@
 library(sppdata)
 ```
 
-## What’s in the SPP
+## About the Subnational Politics Project
 
-The Subnational Politics Project harmonizes subnational political data
-for Argentina, Brazil, and Mexico. The package exposes six relational
-datasets:
+The [Subnational Politics Project
+(SPP)](https://www.subnationalpolitics.com/) provides harmonized
+subnational political data for Argentina, Brazil, and Mexico.
+
+The `sppdata` package facilitates access to six datasets covering
+subnational political institutions, elections, and democracy.
+
+## Available datasets
+
+To explore the datasets available through the package:
 
 ``` r
 
@@ -30,10 +37,12 @@ spp_datasets()
 #> 6                                                                                                                                                                                                                                                                                                                                                           The Capital Federal & Tierra del Fuego Legislatures Database (CFTDFLD) (v. 1) compiles data on subnational legislative elections in Capital Federal and Tierra del Fuego (Argentina) between 1983 and 1996.
 ```
 
-## Exploring variables (offline)
+## Exploring variables
 
-The codebook is bundled with the package, so you can browse variables
-without downloading anything:
+The package provides access to the SPP codebook, which documents the
+variables included in each dataset.
+
+You can explore variables directly in R without an internet connection:
 
 ``` r
 
@@ -53,7 +62,7 @@ head(spp_codebook())
 #> 5                                       Date the governor's term ended.
 #> 6                                               Gender of the governor.
 
-# Just one dataset:
+# Explore variables for a specific dataset
 spp_codebook("SED")
 #>    dataset                          variable
 #> 1      SED                country_state_code
@@ -99,98 +108,75 @@ spp_codebook("SED")
 #> 13 Effective number of parties (Laakso and Taagepera, 1979) for the executive race.
 ```
 
-For a readable, printed view of a dataset’s variables:
+The official PDF codebooks are also available for download. Each version
+corresponds to a published release of the SPP datasets.
 
 ``` r
 
-spp_describe("SED")
-#> Dataset: SED (13 variables)
-#> ------------------------------------------------------------
-#> country_state_code [id]
-#>   Country State Code
-#>   Unique identifier for a country-state unit; join key across datasets.
-#> 
-#> name_head_sub_exe [character]
-#>   Governor Given Name(s)
-#>   Given name(s) of the sitting governor.
-#> 
-#> surname_head_sub_exe [character]
-#>   Governor Surname(s)
-#>   Surname(s) of the sitting governor.
-#> 
-#> start_date_head_sub_exe [date]
-#>   Start Date of Governor Term
-#>   Date the governor's term began.
-#> 
-#> end_date_head_sub_exe [date]
-#>   End Date of Governor Term
-#>   Date the governor's term ended.
-#> 
-#> gender_head_sub_exe [factor]
-#>   Governor Gender
-#>   Gender of the governor.
-#> 
-#> party_head_sub_exe [character]
-#>   Governor Party
-#>   Party of the governor.
-#> 
-#> early_exit_sub_exe [factor]
-#>   Governor Early Exit
-#>   Whether/why the governor left office before the term's scheduled end.
-#> 
-#> consecutive_reelection_sub_exe [integer]
-#>   Governor Reelection
-#>   Count of consecutive reelections for the incumbent governor.
-#> 
-#> turnover_head_sub_exe [binary]
-#>   Governor Turnover
-#>   Whether the governorship changed party control.
-#> 
-#> cumulative_changes_head_sub_exe [integer]
-#>   Cumulative Changes of Governor
-#>   Running count of governor changes in the state.
-#> 
-#> cumulative_years_in_power_sub_exe [numeric]
-#>   Governor Years in Power
-#>   Cumulative years the incumbent party has held the governorship.
-#> 
-#> enp_sub_exe [numeric]
-#>   Effective Number of Parties (executive)
-#>   Effective number of parties (Laakso and Taagepera, 1979) for the executive race.
+# Download the official v1.0 codebook
+spp_codebook(version = "v1.0", download = TRUE)
+
+# Download the official v2.0 codebook
+spp_codebook(version = "v2.0", download = TRUE)
 ```
 
 ## Downloading data
 
+Use
 [`spp_data()`](https://guadag12.github.io/sppdata/reference/spp_data.md)
-fetches a dataset from the project’s GitHub Releases mirror and caches
-it locally, so it only hits the network once per version.
+to download datasets from the project’s GitHub Releases. Downloaded
+datasets are cached locally to avoid unnecessary downloads.
 
 ``` r
 
 sed <- spp_data("SED")
+
 head(sed)
 ```
 
-By default you get the version this package was built against, which
-keeps analyses reproducible. To pull a specific published version:
+You can also request a specific published version:
 
 ``` r
 
 sed_v1 <- spp_data("SED", tag = "v1.0")
 ```
 
-## Managing the cache
+## Mapping subnational politics
+
+SPP provides geographic boundaries for subnational units in Argentina,
+Brazil, and Mexico.
+
+The boundaries can be downloaded from the SPP v2.0 release.
 
 ``` r
 
-spp_cache_dir()     # where downloads live
-spp_cache_clear()   # reclaim the space
+library(sf)
+library(ggplot2)
+
+url <- paste0(
+  "https://github.com/guadag12/sppdata/releases/",
+  "download/v2.0/map_subnational_units.geojson"
+)
+
+map_file <- tempfile(fileext = ".geojson")
+
+download.file(url, map_file, mode = "wb")
+
+map <- sf::st_read(map_file, quiet = TRUE)
+
+ggplot(map) +
+  geom_sf(fill = "#E9ECEF", color = "white", linewidth = 0.2) +
+  theme_void()
 ```
 
-## Citing the data
+## Citing SPP data
 
-The archival, citable copies of the datasets live on Harvard Dataverse.
-The GitHub Releases mirror is a convenience download channel only.
+The archival versions of the SPP datasets are hosted on Harvard
+Dataverse.
+
+Use
+[`spp_citation()`](https://guadag12.github.io/sppdata/reference/spp_citation.md)
+to retrieve citation information and DOIs for the datasets and codebook.
 
 ``` r
 
@@ -200,22 +186,31 @@ spp_citation()
 #> 
 #> NED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Huertas-Hernandez, Sergio; Urdinez, Francisco, 2025, "National Executive Database (NED) (v. 2)", https://doi.org/10.7910/DVN/HNKQUH, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/HNKQUH
 #> 
 #> SED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Urdinez, Francisco, 2025, "Subnational Executive Database (SED) (v. 2)", https://doi.org/10.7910/DVN/1D3P3J, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/1D3P3J
 #> 
 #> SEED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea; Huertas-Hernandez, Sergio; Urdinez, Francisco, 2025, "Subnational Executive Elections Database (SEED) (v. 2)", https://doi.org/10.7910/DVN/UPOWMW, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/UPOWMW
 #> 
 #> SLED
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea, 2025, "Subnational Legislative Elections Database (SLED) (v. 2)", https://doi.org/10.7910/DVN/084FXF, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/084FXF
 #> 
 #> SDI
 #> Giraudy, Agustina, 2025, "Subnational Democracy Index (SDI) (v. 2)", https://doi.org/10.7910/DVN/7TNLBW, Harvard Dataverse, V3
+#> DOI: https://doi.org/10.7910/DVN/7TNLBW
 #> 
 #> CFTDFLD
 #> Giraudy, Agustina; Gonzalez, Guadalupe Andrea, 2025, "Capital Federal & Tierra del Fuego Legislatures Database (CFTDFLD) (v. 1)", https://doi.org/10.7910/DVN/AJJLHX, Harvard Dataverse, V2
+#> DOI: https://doi.org/10.7910/DVN/AJJLHX
 #> 
-#> Codebook (OSF): https://doi.org/10.17605/OSF.IO/H96FD.
-#> Site: https://subnationalpolitics.com
+#> Codebook (OSF): https://doi.org/10.17605/OSF.IO/H96FD
+#> Site: https://www.subnationalpolitics.com/
 ```
+
+For additional information, visit the [Subnational Politics Project
+website](https://www.subnationalpolitics.com/).

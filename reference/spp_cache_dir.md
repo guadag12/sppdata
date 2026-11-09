@@ -15,10 +15,3 @@ spp_cache_dir()
 ## Value
 
 The cache directory path (character scalar). Created if needed.
-
-## Examples
-
-``` r
-spp_cache_dir()
-#> [1] "/home/runner/.cache/R/sppdata"
-```

@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">sppdata</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,18 +38,11 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/getting-started.html">Getting started with sppdata</a></li>
-  </ul>
-</li>
+<li class="nav-item"><a class="nav-link" href="articles/index.html">Articles</a></li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><form class="form-inline" role="search">
- <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
-</form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/guadag12/sppdata/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.subnationalpolitics.com/">SPP website</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/guadag12/sppdata"><span class="fa fab fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -63,158 +56,73 @@
 </h1>
 </div>
 <p>Access to the <strong>Subnational Politics Project (SPP)</strong> datasets from R.</p>
-<p>The <a href="https://www.subnationalpolitics.com/" class="external-link">Subnational Politics Project</a> provides harmonized subnational political data for Argentina, Brazil, and Mexico.</p>
-<p><code>sppdata</code> facilitates access to datasets on political institutions, elections, and subnational democracy. Data is downloaded from GitHub Releases and cached locally, while archival and citable versions are hosted on <a href="https://dataverse.harvard.edu/dataverse/spp/" class="external-link">Harvard Dataverse</a>.</p>
+<p><code>sppdata</code> lets you explore and download harmonized subnational political datasets for Argentina, Brazil, and Mexico. Data are fetched on demand and cached locally; the archival, citable copies are hosted on <a href="https://dataverse.harvard.edu/dataverse/spp/" class="external-link">Harvard Dataverse</a>.</p>
+<p><strong>Project website:</strong> <a href="https://www.subnationalpolitics.com/" class="external-link">subnationalpolitics.com</a></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Install the development version from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<code class="sourceCode R"><span><span class="co"># Development version</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"guadag12/sppdata"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://subnationalpolitics.com" class="external-link">sppdata</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.subnationalpolitics.com/" class="external-link">sppdata</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Explore available datasets</span></span>
-<span><span class="fu"><a href="reference/spp_datasets.html">spp_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/spp_datasets.html">spp_datasets</a></span><span class="op">(</span><span class="op">)</span>                     <span class="co"># available datasets</span></span>
+<span><span class="fu"><a href="reference/spp_codebook.html">spp_codebook</a></span><span class="op">(</span><span class="st">"SED"</span><span class="op">)</span>              <span class="co"># inspect variables offline</span></span>
+<span><span class="fu"><a href="reference/spp_codebook.html">spp_codebook</a></span><span class="op">(</span>download <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>     <span class="co"># save the codebook</span></span>
 <span></span>
-<span><span class="co"># Download a dataset (default: v2.0)</span></span>
-<span><span class="va">sed</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spp_data.html">spp_data</a></span><span class="op">(</span><span class="st">"SED"</span><span class="op">)</span></span>
+<span><span class="va">sed</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spp_data.html">spp_data</a></span><span class="op">(</span><span class="st">"SED"</span><span class="op">)</span>            <span class="co"># download SED</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sed</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Download an earlier version</span></span>
-<span><span class="va">sed_v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spp_data.html">spp_data</a></span><span class="op">(</span><span class="st">"SED"</span>, tag <span class="op">=</span> <span class="st">"v1.0"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/spp_citation.html">spp_citation</a></span><span class="op">(</span><span class="st">"SED"</span><span class="op">)</span>              <span class="co"># citation and DOI</span></span>
+<span><span class="fu"><a href="reference/spp_citation.html">spp_citation</a></span><span class="op">(</span><span class="op">)</span>                   <span class="co"># all citations and DOIs</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="available-datasets">Available datasets<a class="anchor" aria-label="anchor" href="#available-datasets"></a>
+<h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
 </h2>
 <table class="table">
-<colgroup>
-<col width="26%">
-<col width="38%">
-<col width="17%">
-<col width="17%">
-</colgroup>
 <thead><tr>
+<th>Abbreviation</th>
 <th>Dataset</th>
-<th>Description</th>
-<th>v1.0</th>
-<th>v2.0</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>NED</td>
 <td>National Executive Database</td>
-<td>Yes</td>
-<td>Yes</td>
 </tr>
 <tr>
 <td>SED</td>
 <td>Subnational Executive Database</td>
-<td>Yes</td>
-<td>Yes</td>
 </tr>
 <tr>
 <td>SEED</td>
 <td>Subnational Executive Elections Database</td>
-<td>Yes</td>
-<td>Yes</td>
 </tr>
 <tr>
 <td>SLED</td>
 <td>Subnational Legislative Elections Database</td>
-<td>Yes</td>
-<td>Yes</td>
 </tr>
 <tr>
 <td>SDI</td>
 <td>Subnational Democracy Indices</td>
-<td>Yes</td>
-<td>Yes</td>
 </tr>
 <tr>
 <td>CFTDFLD</td>
 <td>Capital Federal &amp; Tierra del Fuego Legislatures Database</td>
-<td>Yes</td>
-<td>—</td>
 </tr>
 </tbody>
 </table>
-<p>The latest release is <code>v2.0</code>. The <code>CFTDFLD</code> dataset is available in <code>v1.0</code>.</p>
-</div>
-<div class="section level2">
-<h2 id="codebooks">Codebooks<a class="anchor" aria-label="anchor" href="#codebooks"></a>
-</h2>
-<p>The package provides access to the SPP codebooks, including downloadable PDFs for both published versions.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Explore variables directly in R</span></span>
-<span><span class="fu"><a href="reference/spp_codebook.html">spp_codebook</a></span><span class="op">(</span><span class="st">"SED"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Download official PDF codebooks</span></span>
-<span><span class="fu"><a href="reference/spp_codebook.html">spp_codebook</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"v1.0"</span>, download <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/spp_codebook.html">spp_codebook</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"v2.0"</span>, download <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>The PDF codebooks are distributed through <a href="https://github.com/guadag12/sppdata/releases" class="external-link">GitHub Releases</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="geographic-boundaries">Geographic boundaries<a class="anchor" aria-label="anchor" href="#geographic-boundaries"></a>
-</h2>
-<p>Geographic boundaries for subnational units in Argentina, Brazil, and Mexico are available as a GeoJSON file.</p>
-<p>Download the boundaries directly from the <a href="https://github.com/guadag12/sppdata/releases/download/v2.0/map_subnational_units.geojson" class="external-link">v2.0 release</a>.</p>
-<p>Example using R:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
-<span>  <span class="st">"https://github.com/guadag12/sppdata/releases/"</span>,</span>
-<span>  <span class="st">"download/v2.0/map_subnational_units.geojson"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">map_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".geojson"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">map_file</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">st_read</span><span class="op">(</span><span class="va">map_file</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">map</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_sf</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#E9ECEF"</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h2>
-<p>To retrieve citation information and DOIs for SPP datasets and documentation:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/spp_citation.html">spp_citation</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>When using SPP data in academic research, please cite the relevant dataset version and its archival record on Harvard Dataverse.</p>
-</div>
-<div class="section level2">
-<h2 id="data-availability">Data availability<a class="anchor" aria-label="anchor" href="#data-availability"></a>
-</h2>
-<ul>
-<li>
-<strong>Project website:</strong> <a href="https://www.subnationalpolitics.com/" class="external-link uri">https://www.subnationalpolitics.com/</a>
-</li>
-<li>
-<strong>Documentation:</strong> <a href="https://guadag12.github.io/sppdata/" class="uri">https://guadag12.github.io/sppdata/</a>
-</li>
-<li>
-<strong>Data downloads:</strong> <a href="https://github.com/guadag12/sppdata/releases" class="external-link uri">https://github.com/guadag12/sppdata/releases</a>
-</li>
-<li>
-<strong>Archival repository:</strong> <a href="https://dataverse.harvard.edu/dataverse/spp/" class="external-link uri">https://dataverse.harvard.edu/dataverse/spp/</a>
-</li>
-</ul>
+<p>See the <a href="https://guadag12.github.io/sppdata/articles/getting-started.html">Getting started vignette</a> for a mapping example, or visit the <a href="https://www.subnationalpolitics.com/" class="external-link">SPP interactive website</a> to explore the data visually.</p>
 </div>
 <div class="section level2">
 <h2 id="authors">Authors<a class="anchor" aria-label="anchor" href="#authors"></a>
 </h2>
-<p><strong>Guadalupe Gonzalez</strong> — Author and maintainer</p>
-<p><strong>Agustina Giraudy</strong> — Author</p>
-<p>Additional research team members are acknowledged as contributors in the package documentation.</p>
+<p>Guadalupe Gonzalez (author and maintainer) and Agustina Giraudy (author). Additional team members are credited as contributors in the package metadata.</p>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
@@ -252,8 +160,6 @@
 <ul class="list-unstyled">
 <li>Guadalupe Gonzalez <br><small class="roles"> Author, maintainer </small>   </li>
 <li>Agustina Giraudy <br><small class="roles"> Author </small>   </li>
-<li>Francisco Urdinez <br><small class="roles"> Author </small>   </li>
-<li>Felipe Soto Jorquera <br><small class="roles"> Author </small>   </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -265,7 +171,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Guadalupe Gonzalez, Agustina Giraudy, Francisco Urdinez, Felipe Soto Jorquera.</p>
+  <p>Developed by Guadalupe Gonzalez, Agustina Giraudy.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -1,5 +1,6 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://guadag12.github.io/sppdata/404.html</loc></url>
+<url><loc>https://guadag12.github.io/sppdata/CRAN_AUDIT.html</loc></url>
 <url><loc>https://guadag12.github.io/sppdata/LICENSE-text.html</loc></url>
 <url><loc>https://guadag12.github.io/sppdata/articles/getting-started.html</loc></url>
 <url><loc>https://guadag12.github.io/sppdata/articles/index.html</loc></url>
@@ -13,7 +14,6 @@
 <url><loc>https://guadag12.github.io/sppdata/reference/spp_data.html</loc></url>
 <url><loc>https://guadag12.github.io/sppdata/reference/spp_datasets.html</loc></url>
 <url><loc>https://guadag12.github.io/sppdata/reference/spp_describe.html</loc></url>
-<url><loc>https://guadag12.github.io/sppdata/reference/spp_doi.html</loc></url>
 <url><loc>https://guadag12.github.io/sppdata/reference/sppdata-package.html</loc></url>
 </urlset>
 

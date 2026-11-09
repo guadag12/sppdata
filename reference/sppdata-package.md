@@ -1,36 +1,27 @@
-# sppdata: Access to the Subnational Politics Project datasets
+# sppdata: Subnational Politics Project datasets
 
-Download and explore the harmonized subnational political datasets of
-the Subnational Politics Project (SPP) for Argentina, Brazil, and
-Mexico. Data is fetched on demand from a GitHub Releases mirror and
-cached locally; the archival, citable copies live on Harvard Dataverse.
+Access SPP data for Argentina, Brazil, and Mexico. See
+<https://www.subnationalpolitics.com/>.
 
 ## Main functions
 
 - [`spp_datasets()`](https://guadag12.github.io/sppdata/reference/spp_datasets.md):
-  list the available datasets.
+  list datasets.
 
 - [`spp_data()`](https://guadag12.github.io/sppdata/reference/spp_data.md):
-  download one dataset.
+  download a dataset.
 
-- [`spp_codebook()`](https://guadag12.github.io/sppdata/reference/spp_codebook.md)
-  /
-  [`spp_describe()`](https://guadag12.github.io/sppdata/reference/spp_describe.md):
-  explore variables (offline).
-
-- [`spp_cache_dir()`](https://guadag12.github.io/sppdata/reference/spp_cache_dir.md)
-  /
-  [`spp_cache_clear()`](https://guadag12.github.io/sppdata/reference/spp_cache_clear.md):
-  manage the local cache.
+- [`spp_codebook()`](https://guadag12.github.io/sppdata/reference/spp_codebook.md):
+  browse or download the codebook.
 
 - [`spp_citation()`](https://guadag12.github.io/sppdata/reference/spp_citation.md):
-  how to cite the data.
+  dataset citations and DOIs.
 
 ## See also
 
 Useful links:
 
-- <https://subnationalpolitics.com>
+- <https://www.subnationalpolitics.com/>
 
 - <https://github.com/guadag12/sppdata>
 
@@ -38,20 +29,20 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Guadalupe Gonzalez <guada@example.edu>
+**Maintainer**: Guadalupe Gonzalez <guadag12@umd.edu>
 
 Authors:
 
-- Guadalupe Gonzalez <guada@example.edu>
+- Guadalupe Gonzalez <guadag12@umd.edu>
 
 - Agustina Giraudy
 
-- Francisco Urdinez
-
-- Felipe Soto Jorquera
-
 Other contributors:
 
-- Magdalena Nieto \[research team member\]
+- Francisco Urdinez \[contributor\]
+
+- Felipe Soto Jorquera \[contributor\]
+
+- Magdalena Nieto \[contributor\]
 
 - Subnational Politics Project \[copyright holder\]
