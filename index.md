@@ -2,13 +2,19 @@
 
 Access to the **Subnational Politics Project (SPP)** datasets from R.
 
-`sppdata` lets you download the SPP’s harmonized subnational political
-datasets for Argentina, Brazil, and Mexico, and browse their variables
-offline. Data is fetched on demand from a GitHub Releases mirror and
-cached locally; the archival, citable copies live on [Harvard
+The [Subnational Politics Project](https://www.subnationalpolitics.com/)
+provides harmonized subnational political data for Argentina, Brazil,
+and Mexico.
+
+`sppdata` facilitates access to datasets on political institutions,
+elections, and subnational democracy. Data is downloaded from GitHub
+Releases and cached locally, while archival and citable versions are
+hosted on [Harvard
 Dataverse](https://dataverse.harvard.edu/dataverse/spp/).
 
 ## Installation
+
+Install the development version from GitHub:
 
 ``` r
 
@@ -16,41 +22,114 @@ Dataverse](https://dataverse.harvard.edu/dataverse/spp/).
 pak::pak("guadag12/sppdata")
 ```
 
-## Usage
+## Getting started
 
 ``` r
 
 library(sppdata)
 
-spp_datasets()        # the six SPP datasets
-spp_codebook("SED")   # variables in one dataset (offline)
-spp_describe("SED")   # printed, readable view
+# Explore available datasets
+spp_datasets()
 
-sed <- spp_data("SED")  # download + cache
+# Download a dataset (default: v2.0)
+sed <- spp_data("SED")
 head(sed)
 
-spp_citation()        # how to cite
+# Download an earlier version
+sed_v1 <- spp_data("SED", tag = "v1.0")
 ```
 
-## Datasets
+## Available datasets
 
-| Abbrev  | Name                                                     |
-|---------|----------------------------------------------------------|
-| NED     | National Executive Database                              |
-| SED     | Subnational Executive Database                           |
-| SEED    | Subnational Executive Elections Database                 |
-| SLED    | Subnational Legislative Elections Database               |
-| SDI     | Subnational Democracy Indices                            |
-| CFTDFLD | Capital Federal & Tierra del Fuego Legislatures Database |
+| Dataset | Description                                              | v1.0 | v2.0 |
+|---------|----------------------------------------------------------|------|------|
+| NED     | National Executive Database                              | Yes  | Yes  |
+| SED     | Subnational Executive Database                           | Yes  | Yes  |
+| SEED    | Subnational Executive Elections Database                 | Yes  | Yes  |
+| SLED    | Subnational Legislative Elections Database               | Yes  | Yes  |
+| SDI     | Subnational Democracy Indices                            | Yes  | Yes  |
+| CFTDFLD | Capital Federal & Tierra del Fuego Legislatures Database | Yes  | —    |
 
-## How it works
+The latest release is `v2.0`. The `CFTDFLD` dataset is available in
+`v1.0`.
 
-- **Download channel:** GitHub Releases, via the `piggyback` package.
-- **Cache:** `tools::R_user_dir("sppdata", "cache")`; clear with
-  [`spp_cache_clear()`](https://guadag12.github.io/sppdata/reference/spp_cache_clear.md).
-- **Archival source:** Harvard Dataverse (versioned DOIs) — the citable
-  copy.
-- **Codebook:** bundled as a CSV, so it works with no network.
+## Codebooks
+
+The package provides access to the SPP codebooks, including downloadable
+PDFs for both published versions.
+
+``` r
+
+# Explore variables directly in R
+spp_codebook("SED")
+
+# Download official PDF codebooks
+spp_codebook(version = "v1.0", download = TRUE)
+spp_codebook(version = "v2.0", download = TRUE)
+```
+
+The PDF codebooks are distributed through [GitHub
+Releases](https://github.com/guadag12/sppdata/releases).
+
+## Geographic boundaries
+
+Geographic boundaries for subnational units in Argentina, Brazil, and
+Mexico are available as a GeoJSON file.
+
+Download the boundaries directly from the [v2.0
+release](https://github.com/guadag12/sppdata/releases/download/v2.0/map_subnational_units.geojson).
+
+Example using R:
+
+``` r
+
+library(sf)
+library(ggplot2)
+
+url <- paste0(
+  "https://github.com/guadag12/sppdata/releases/",
+  "download/v2.0/map_subnational_units.geojson"
+)
+
+map_file <- tempfile(fileext = ".geojson")
+download.file(url, map_file, mode = "wb")
+
+map <- st_read(map_file, quiet = TRUE)
+
+ggplot(map) +
+  geom_sf(fill = "#E9ECEF", color = "white", linewidth = 0.2) +
+  theme_void()
+```
+
+## Citation
+
+To retrieve citation information and DOIs for SPP datasets and
+documentation:
+
+``` r
+
+spp_citation()
+```
+
+When using SPP data in academic research, please cite the relevant
+dataset version and its archival record on Harvard Dataverse.
+
+## Data availability
+
+- **Project website:** <https://www.subnationalpolitics.com/>
+- **Documentation:** <https://guadag12.github.io/sppdata/>
+- **Data downloads:** <https://github.com/guadag12/sppdata/releases>
+- **Archival repository:**
+  <https://dataverse.harvard.edu/dataverse/spp/>
+
+## Authors
+
+**Guadalupe Gonzalez** — Author and maintainer
+
+**Agustina Giraudy** — Author
+
+Additional research team members are acknowledged as contributors in the
+package documentation.
 
 ## License
 
